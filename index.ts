@@ -15,7 +15,12 @@ const app = express()
 const port = 3000
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: "*", // ou "https://seu-front.vercel.app"
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use("/funcoes", routesFuncoes)
 app.use("/profissionais", routesProfissionais)
 app.use("/pacientes", routesPacientes)
@@ -31,4 +36,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta: ${port}`)
+
 })
