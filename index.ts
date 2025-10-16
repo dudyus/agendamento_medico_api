@@ -15,12 +15,7 @@ const app = express()
 const port = 3000
 
 app.use(express.json())
-app.use(cors({
-  origin: "*", // ou "https://seu-front.vercel.app"
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
+app.use(cors())
 app.use("/funcoes", routesFuncoes)
 app.use("/profissionais", routesProfissionais)
 app.use("/pacientes", routesPacientes)
@@ -33,5 +28,4 @@ app.use("/dashboard", routesDashboard)
 app.get('/', (req, res) => {
   res.send('API: Agendamento Médico')
 })
-
 
